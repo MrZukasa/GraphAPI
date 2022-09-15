@@ -44,6 +44,10 @@ namespace Space
                     {
                         responseString = @"{ Status: 'successful'}";
                     }
+                    else
+                    {
+                        responseString = @"{ error: 'error'}";
+                    }
                     obj = JObject.Parse(responseString);
                     break;
 
