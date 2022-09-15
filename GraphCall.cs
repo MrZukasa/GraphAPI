@@ -35,6 +35,18 @@ namespace Space
                     obj = JObject.Parse(responseString);
                     break;
 
+                case "DELETE":
+                    request = new HttpRequestMessage(new HttpMethod("DELETE"), API);
+                    request.Content = new StringContent(API, Encoding.UTF8, "application/json");
+                    HttpResponseMessage deleteResponse = await client.SendAsync(request);
+                    //responseString = await deleteResponse.Content.ReadAsStringAsync();
+                    if ( deleteResponse.IsSuccessStatusCode)
+                    {
+                        responseString = @"{ Status: 'successful'}";
+                    }
+                    obj = JObject.Parse(responseString);
+                    break;
+
                 case "GET":
                     response = await client.GetAsync(API);
                     responseString = await response.Content.ReadAsStringAsync();
